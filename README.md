@@ -9,5 +9,5 @@ multiplayer minesweeper
 # todo
 - [ ] soft marking
 - [ ] themes
-- [ ] hover colors for all
-- [ ] convert to typescript
+- [x] hover colors for all
+- [x] convert to typescript

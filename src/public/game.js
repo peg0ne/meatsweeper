@@ -57,6 +57,10 @@ function create() {
                 e.preventDefault();
                 mark(e.target);
             }
+            t.onwheel = (e) => {
+                e.preventDefault();
+                mark(e.target);
+            }
             t.onmouseenter = (e) => socket.emit("hover", parseInt(e.target.id.split(".")[0]), parseInt(e.target.id.split(".")[1]), true);
             t.onmouseleave = (e) => socket.emit("hover", parseInt(e.target.id.split(".")[0]), parseInt(e.target.id.split(".")[1]), false);
             l.appendChild(t);
