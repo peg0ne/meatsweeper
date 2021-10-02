@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding-bottom: 3rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #8FBC8F;
+    color: black;
+    padding: 50px;
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+}
+
+#input:focus {
+    outline: none;
+}
+
+.tile,
+.tile_hidden,
+.tile_mark,
+.bomb,
+.bomb_hidden,
+.bomb_mark,
+.tile_zero,
+.tile_zero_hover,
+.tile_hover,
+.tile_hidden_hover,
+.bomb_hidden_hover,
+.tile_mark_hover,
+.bomb_hover,
+.bomb_mark_hover {
+    width: 40px;
+    height: 40px;
+    outline: #e2f5e2 4px solid;
+    background-color: #C2DBC6;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: x-large;
+    padding-top: 5px;
+}
+
+.tile_hidden,
+.bomb_hidden,
+.tile_mark,
+.bomb_mark,
+.bomb,
+.tile_mark_hover,
+.bomb_mark_hover,
+.bomb_hover {
+    color: transparent!important;
+}
+
+.tile_hidden:hover,
+.bomb_hidden:hover,
+.tile_hidden_hover:hover,
+.bomb_hidden_hover:hover {
+    background-color: #9DCDB3;
+}
+
+.tile_hidden,
+.bomb_hidden {
+    background-color: #3B9B66;
+}
+
+.tile_hidden_hover,
+.bomb_hidden_hover {
+    background-color: #C2DBC6;
+}
+
+.tile_mark,
+.bomb_mark,
+.tile_mark_hover,
+.bomb_mark_hover {
+    color: black!important;
+    font-family: 'Material Icons';
+    background-color: #3B9B66;
+}
+
+.bomb,
+.bomb_hover {
+    color: black!important;
+    font-family: 'Material Icons';
+    background-color: #d19292;
+}
+
+.tile_zero,
+.tile_zero_hover {
+    background-color: #C2DBC6;
+}
+
+.line {
+    margin: auto;
+    width: 1200px;
+    height: 40px;
+    display: flex;
+}
+
+.board {
+    margin: auto;
+    padding-left: auto;
+    padding-right: auto;
+    height: 100vh;
+}
+
+#restartPage {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000050;
+    overflow: hidden;
+    margin: -50px;
+    align-content: center;
+}
+
+#restartButton {
+    width: 300px;
+    height: 100px;
+    margin: auto;
+    color: black;
+    background-color: #9DCDB3;
+    outline: #e2f5e2 4px solid;
+}
