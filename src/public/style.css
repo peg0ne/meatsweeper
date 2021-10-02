@@ -54,10 +54,12 @@ body {
     color: transparent!important;
 }
 
+.tile_hover {
+    background-color: #dbf3df;
+}
+
 .tile_hidden:hover,
-.bomb_hidden:hover,
-.tile_hidden_hover:hover,
-.bomb_hidden_hover:hover {
+.bomb_hidden:hover {
     background-color: #9DCDB3;
 }
 
@@ -67,7 +69,9 @@ body {
 }
 
 .tile_hidden_hover,
-.bomb_hidden_hover {
+.bomb_hidden_hover,
+.tile_hidden_hover:hover,
+.bomb_hidden_hover:hover {
     background-color: #C2DBC6;
 }
 
@@ -80,6 +84,11 @@ body {
     background-color: #3B9B66;
 }
 
+.tile_mark_hover,
+.bomb_mark_hover {
+    background-color: #92b4a1!important;
+}
+
 .bomb,
 .bomb_hover {
     color: black!important;
@@ -87,9 +96,16 @@ body {
     background-color: #d19292;
 }
 
-.tile_zero,
-.tile_zero_hover {
+.bomb_hover {
+    background-color: #cabbbb;
+}
+
+.tile_zero {
     background-color: #C2DBC6;
+}
+
+.tile_zero_hover {
+    background-color: #d8f1dc;
 }
 
 .line {

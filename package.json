@@ -1,12 +1,19 @@
 {
-  "name": "meatsweeper",
-  "version": "0.0.1",
-  "description": "minesweeper team",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.2.0"
-  }
+    "name": "meatsweeper",
+    "version": "0.0.1",
+    "description": "minesweeper team",
+    "scripts": {
+        "compile": "tsc",
+        "copy-dep": "copyfiles -f src/index.html build && copyfiles -f src/public/game.js build/public && copyfiles -f src/public/style.css build/public",
+        "start": "npm run compile && npm run copy-dep && node ./build/app.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^4.2.0"
+    },
+    "devDependencies": {
+        "copyfiles": "^2.4.1",
+        "tsc": "^2.0.3",
+        "typescript": "^4.4.3"
+    }
 }
