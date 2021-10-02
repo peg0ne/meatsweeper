@@ -1,6 +1,6 @@
 var sizeY = 30; //30
 var sizeX = 16; //16
-var bombs = 1;
+var bombs = 100; //100
 
 function create() {
     var taken = 0;
