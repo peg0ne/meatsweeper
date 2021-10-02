@@ -1,0 +1,2 @@
+# meatsweeper
+multiplayer minesweeper
