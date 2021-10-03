@@ -6,7 +6,7 @@ export class EventManager {
 
     constructor(io: Server) {
         this.io = io;
-        this.game = new Game(30, 16, 100);
+        this.game = new Game(30, 20, 100);
     }
 
     start() {
