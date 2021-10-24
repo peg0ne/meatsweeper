@@ -9,7 +9,7 @@ export class Game {
         this.sizeY = sizeY;
         this.bombs = bombs;
     }
-    
+
     create() {
         var taken: number = 0;
         var grid: any = [];
@@ -30,9 +30,10 @@ export class Game {
         return grid;
     }
 
-    resize(x: number, y:number, bombs: number) {
-         this.sizeX = x;
-	 this.sizeY = y;
-	 this.bombs = bombs;
+    resize(x: number, y: number, bombs: number) {
+        if ((x * y) / 2 < bombs) return;
+        this.sizeX = x;
+        this.sizeY = y;
+        this.bombs = bombs;
     }
 }
