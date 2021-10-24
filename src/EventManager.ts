@@ -21,6 +21,10 @@ export class EventManager {
             socket.on('hover', (x: number, y: number, isOver: boolean) => {
                 this.io.emit("hover", x, y, isOver);
             });
+	    socket.on('resize', (x: number, y: number, bombs: number) => {
+		this.game.resize(x,y,bombs);
+		this.io.emit("restart", this.game.create());
+	    })
             socket.on('restart', () => {
                 this.io.emit("restart", this.game.create());
             });

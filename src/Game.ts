@@ -29,4 +29,10 @@ export class Game {
         }
         return grid;
     }
+
+    resize(x: number, y:number, bombs: number) {
+         this.sizeX = x;
+	 this.sizeY = y;
+	 this.bombs = bombs;
+    }
 }

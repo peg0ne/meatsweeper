@@ -20,10 +20,14 @@ var restartPage = document.getElementById("restartPage");
 var restartButton = document.getElementById("restartButton");
 var nameInput = document.getElementById("name");
 var timer = document.getElementById("timer");
+var sizeX = document.getElementById("sizeX");
+var sizeY = document.getElementById("sizeY");
+var amountOfBombs = document.getElementById("bombAmount");
 
 //start
 var socket = io();
 setupRestartPage();
+setupResize();
 
 //socket
 socket.on("create", (g) => {
@@ -137,6 +141,21 @@ function setupRestartPage() {
         e.preventDefault();
         hide(restartPage);
         socket.emit("restart");
+    };
+}
+
+function setupResize() {
+    sizeX.onchange = (e) => {
+	start = false;
+        socket.emit("resize", sizeX.value, sizeY.value, amountOfBombs.value);
+    };
+    sizeY.onchange = (e) => {
+	start = false;
+        socket.emit("resize", sizeX.value, sizeY.value, amountOfBombs.value);
+    };
+    amountOfBombs.onchange = (e) => {
+        start = false;
+        socket.emit("resize", sizeX.value, sizeY.value, amountOfBombs.value);
     };
 }
 
