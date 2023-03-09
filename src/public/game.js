@@ -13,6 +13,7 @@ var bombsLeft = 0;
 var time = 0;
 var grid = [];
 var start = true;
+var isFirst = true;
 
 //elements
 var bombCounter = document.getElementById("bombCounter");
@@ -51,6 +52,7 @@ socket.on("showRestart", (x, y, name) => {
 });
 
 function create() {
+    isFirst = true;
     bombsLeft = 0;
     time = 0;
     start = false;
@@ -101,7 +103,9 @@ function create() {
     totalBombs = bombsLeft;
     bombCounter.innerText = `Bombs Left: ${bombsLeft}`;
     start = true;
-    timerStart();
+    setTimeout(() => {
+        if (start) timerStart();
+    }, 1000);
 }
 
 function checkSurrounding(x, y) {
@@ -121,6 +125,13 @@ function selection(target) {
     if (hasName() && !target.className.includes("mark")) {
         var pos = parseId(target.id);
         var b = isBomb(target);
+        if (b && isFirst) {
+            socket.emit("restart");
+            return;
+        } else if (isFirst && checkSurrounding(pos[0], pos[1]) != 0) {
+            socket.emit("restart");
+            return;
+        }
         socket.emit("click", pos[0], pos[1], b, nameInput.value);
     }
 }
@@ -146,11 +157,11 @@ function setupRestartPage() {
 
 function setupResize() {
     sizeX.onchange = (e) => {
-	start = false;
+        start = false;
         socket.emit("resize", sizeX.value, sizeY.value, amountOfBombs.value);
     };
     sizeY.onchange = (e) => {
-	start = false;
+        start = false;
         socket.emit("resize", sizeX.value, sizeY.value, amountOfBombs.value);
     };
     amountOfBombs.onchange = (e) => {
@@ -210,6 +221,7 @@ function targetExists(x, y) {
 
 function show(x, y) {
     if (!isWithinBounds(x, y) || !targetExists(x, y)) return;
+    isFirst = false;
     var target = mainBoard.childNodes[x].childNodes[y];
     if (isBomb(target) || isVisible(target)) return;
     setTargetState(x, y, "show");
@@ -296,10 +308,9 @@ function showEndScreen(name, success) {
     setDisplay(restartPage, "inline-grid");
     var text = "";
     if (success) {
-	// add best time
+        // add best time
         text = "Good Job! You made it... Finally";
-    }
-    else
+    } else
         text = insults[parseInt(Math.random() * insults.length)].replace(
             "{x}",
             name

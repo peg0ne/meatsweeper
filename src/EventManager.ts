@@ -13,7 +13,7 @@ export class EventManager {
         this.io.on('connection', (socket) => {
             this.io.emit("create", this.game.create());
             socket.on('click', (x, y, isBomb, name) => {
-                this.onClick(x,y,isBomb,name)
+                this.onClick(x, y, isBomb, name)
             });
             socket.on('mark', (x: number, y: number) => {
                 this.io.emit("mark", x, y);
@@ -21,10 +21,10 @@ export class EventManager {
             socket.on('hover', (x: number, y: number, isOver: boolean) => {
                 this.io.emit("hover", x, y, isOver);
             });
-	    socket.on('resize', (x: number, y: number, bombs: number) => {
-		this.game.resize(x,y,bombs);
-		this.io.emit("restart", this.game.create());
-	    })
+            socket.on('resize', (x: number, y: number, bombs: number) => {
+                this.game.resize(x, y, bombs);
+                this.io.emit("restart", this.game.create());
+            })
             socket.on('restart', () => {
                 this.io.emit("restart", this.game.create());
             });
